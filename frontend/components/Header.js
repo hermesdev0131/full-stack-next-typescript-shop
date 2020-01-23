@@ -59,8 +59,9 @@ const Header = () => (
   <StyledHeader>
     <div className="bar">
       <Logo>
-        <Link href="/"><a>Sick Fits</a></Link></Logo>
-      <Nav/>
+        <Link href="/"><a>Sick Fits</a></Link>
+      </Logo>
+      <Nav />
     </div>
     <div className="sub-bar">
       <p>Search</p>
