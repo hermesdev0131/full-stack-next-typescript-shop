@@ -47,11 +47,11 @@ const StyledHeader = styled.header`
       justify-content: center;
     }
   }
-  
+
   .sub-bar {
     display: grid;
     drid-template-columns: 1fr auto;
-    border-bottom: 1px solid ${props => props.theme.lightgrey}
+    border-bottom: 1px solid ${props => props.theme.lightgrey};
   }
 `
 
@@ -59,7 +59,9 @@ const Header = () => (
   <StyledHeader>
     <div className="bar">
       <Logo>
-        <Link href="/"><a>Sick Fits</a></Link>
+        <Link href="/">
+          <a>Sick Fits</a>
+        </Link>
       </Logo>
       <Nav />
     </div>

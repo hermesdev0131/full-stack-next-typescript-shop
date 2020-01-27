@@ -10,7 +10,7 @@ const theme = {
   lightgrey: '#E1E1E1E1',
   offWhite: '#EDEDED',
   maxWidth: '1000px',
-  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)'
+  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
 }
 
 const StyledPage = styled.div`
@@ -54,11 +54,15 @@ injectGlobal`
 
 class Page extends Component {
   render() {
-    return (<ThemeProvider theme={theme}><StyledPage>
-      <Meta />
-      <Header />
-      <Inner>{this.props.children}</Inner>
-    </StyledPage></ThemeProvider>)
+    return (
+      <ThemeProvider theme={theme}>
+        <StyledPage>
+          <Meta />
+          <Header />
+          <Inner>{this.props.children}</Inner>
+        </StyledPage>
+      </ThemeProvider>
+    )
   }
 }
 
