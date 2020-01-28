@@ -34,11 +34,33 @@ class CreateItem extends Component {
     largeImage: 'large-dog.jpg',
     price: 1000,
   }
+
   handleChange = e => {
     const { name, type, value } = e.target
     const val = type === 'number' ? parseFloat(value) : value
     this.setState({ [name]: val })
   }
+
+  uploadFile = async e => {
+    const files = e.target.files
+    const data = new FormData()
+    data.append('file', files[0])
+    data.append('upload_preset', 'sikfit')
+
+    const res = await fetch(
+      'https://res.cloudinary.com/dqbtfiztl/image/upload',
+      {
+        method: 'POST',
+        body: data,
+      }
+    )
+    const file = await res.json()
+    this.setState({
+      image: file.secure_url,
+      largeImage: file.eager[0].secure_url,
+    })
+  }
+
   render() {
     return (
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
@@ -50,7 +72,6 @@ class CreateItem extends Component {
               // call the mutation
               const res = await createItem()
               // change them to the single item page
-              console.log(res)
               Router.push({
                 pathname: '/item',
                 query: { id: res.data.createItem.id },
@@ -59,17 +80,19 @@ class CreateItem extends Component {
           >
             <Error error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
-              <label htmlFor="title">
-                Title
+              <label htmlFor="file">
+                Image
                 <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  placeholder="Title"
+                  type="file"
+                  id="file"
+                  name="file"
+                  placeholder="upload an iamge"
                   required
-                  value={this.state.title}
-                  onChange={this.handleChange}
+                  onChange={this.uploadFile}
                 />
+                {this.state.image && (
+                  <img width="200" height="200" src={this.state.image} alt="Upload Preview" />
+                )}
               </label>
 
               <label htmlFor="price">
