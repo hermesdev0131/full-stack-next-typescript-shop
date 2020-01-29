@@ -80,20 +80,17 @@ class CreateItem extends Component {
           >
             <Error error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
-              <label htmlFor="file">
-                Image
-                <input
-                  type="file"
-                  id="file"
-                  name="file"
-                  placeholder="upload an iamge"
-                  required
-                  onChange={this.uploadFile}
-                />
-                {this.state.image && (
-                  <img width="200" height="200" src={this.state.image} alt="Upload Preview" />
-                )}
-              </label>
+               <label htmlFor="title">
+                 Title
+               </label>
+              <input type="text"
+                     id="title"
+                     name="title"
+                     placeholder="Title"
+                     required
+                     value={this.state.title}
+                    onChange={this.handleChange}
+              />
 
               <label htmlFor="price">
                 Price
