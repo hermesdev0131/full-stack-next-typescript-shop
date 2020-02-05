@@ -1,6 +1,7 @@
 import React from 'react'
 import Signin from '../components/Signin'
 import Signup from '../components/Signup'
+import RequestReset from '../components/RequestReset'
 import styled from 'styled-components'
 
 const Colmuns = styled.div`
@@ -13,6 +14,7 @@ const SignupPage = () => (
   <Colmuns>
     <Signup />
     <Signin />
+    <RequestReset />
   </Colmuns>
 )
 
