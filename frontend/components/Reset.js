@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import Form from './styles/Form'
 import Error from './ErrorMessage'
-import PropsTypes from 'prop-types'
+import propsTypes from 'prop-types'
 import { CURRENT_USER_QUERY } from './User'
 
 const RESET_MUTATION = gql`
@@ -26,7 +26,7 @@ const RESET_MUTATION = gql`
 
 class Reset extends Component {
   static propTypes = {
-    resetToken: PropTypes.string.isRequired,
+    resetToken: propsTypes.string.isRequired,
   }
   state = {
     password: '',
@@ -60,7 +60,7 @@ class Reset extends Component {
             >
               <fieldset disabled={loading} aria-busy={loading}>
                 <h2>Reset Your Password</h2>
-                <Error error={error} />
+                  <Error error={error} />
                 <label htmlFor="password">
                   Password
                   <input

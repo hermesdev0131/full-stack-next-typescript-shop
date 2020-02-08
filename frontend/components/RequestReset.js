@@ -6,7 +6,7 @@ import Error from './ErrorMessage'
 
 const REQUEST_RESET_MUTATION = gql`
   mutation REQUEST_RESET_MUTATION($email: String!) {
-    signin(email: $email) {
+      requestReset(email: $email) {
         message
     }
   }
