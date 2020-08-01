@@ -37,6 +37,7 @@ class CreateItem extends Component {
 
   handleChange = e => {
     const { name, type, value } = e.target
+    if (Number.isNaN(val)) return
     const val = type === 'number' ? parseFloat(value) : value
     this.setState({ [name]: val })
   }
@@ -48,7 +49,7 @@ class CreateItem extends Component {
     data.append('upload_preset', 'sikfit')
 
     const res = await fetch(
-      'https://res.cloudinary.com/dqbtfiztl/image/upload',
+      'https://api.cloudinary.com/v1_1/dqbtfiztl/image/upload',
       {
         method: 'POST',
         body: data,
@@ -80,16 +81,27 @@ class CreateItem extends Component {
           >
             <Error error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
-               <label htmlFor="title">
-                 Title
-               </label>
-              <input type="text"
-                     id="title"
-                     name="title"
-                     placeholder="Title"
-                     required
-                     value={this.state.title}
-                    onChange={this.handleChange}
+              <label htmlFor="file">
+                Image
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  placeholder="Upload an image"
+                  required
+                  onChange={this.uploadFile}
+                />
+              </label>
+
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Title"
+                required
+                value={this.state.title}
+                onChange={this.handleChange}
               />
 
               <label htmlFor="price">
