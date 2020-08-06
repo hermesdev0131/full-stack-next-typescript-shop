@@ -24,7 +24,7 @@ const Query = {
     // 2. Check if the user has the the permissions to query add the users
     hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE'])
 
-    // 2.if they do, queryadd the users!
+    // 2.if they do, query add the users!
     return ctx.db.query.users({}, info)
   },
 }
