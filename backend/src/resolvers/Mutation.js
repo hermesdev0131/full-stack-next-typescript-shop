@@ -44,7 +44,7 @@ const Mutations = {
 
   async deleteItem(parent, args, ctx, info) {
     const where = { id: args.id }
-    const item = await ctx.db.query.item({ where }, `{ id title }`)
+    const item = await ctx.db.query.item({ where }, `{ id title user { id } }`)
     const ownsItem = item.user.id === ctx.request.userId
     const hasPermissions = ctx.request.user.permissions.some(permission =>
       ['ADMIN', 'ITEMDELETE'].includes(permission)
