@@ -15,11 +15,10 @@ const SingleItemStyles = styled.div`
   min-height: 800px;
   img {
     width: 100%;
-    hegiht: 100%;
+    height: 100%;
     object-fit: contain;
   }
-  ,
-  details {
+  .details {
     margin: 3rem;
     font-size: 2rem;
   }
@@ -35,11 +34,15 @@ const SINGLE_ITEM_QUERY = gql`
     }
   }
 `
-
 class SingleItem extends Component {
   render() {
     return (
-      <Query query={SINGLE_ITEM_QUERY} variables={{ id: this.props.id }}>
+      <Query
+        query={SINGLE_ITEM_QUERY}
+        variables={{
+          id: this.props.id,
+        }}
+      >
         {({ error, loading, data }) => {
           if (error) return <Error error={error} />
           if (loading) return <p>Loading...</p>
@@ -64,3 +67,4 @@ class SingleItem extends Component {
 }
 
 export default SingleItem
+export { SINGLE_ITEM_QUERY }
