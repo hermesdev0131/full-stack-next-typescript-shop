@@ -52,4 +52,6 @@ type Order {
   total: Int!
   user: User!
   charge: String!
+  cat: DateTime! @createdAt
+  uat: DateTime! @updatedAt
 }
