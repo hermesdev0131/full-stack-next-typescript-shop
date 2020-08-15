@@ -13,8 +13,8 @@
     "prettier": "prettier --write ./**/*"
   },
   "author": [
-    "hey@wesbos.com",
-    "Ryota Murakami <dojce1048@gmail.com> (https://github.com/ryota-murakami)"
+    "Wes Bos <hey@wesbos.com> (https://wesbos.com/)",
+    "Ryota Murakami <dojce1048@gmail.com> (https://ryota-murakami.github.io/)"
   ],
   "license": "ISC",
   "dependencies": {
