@@ -1,6 +1,8 @@
-endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.prisma
 #secret: ${env.PRISMA_SECRET}
 hooks:
-    post-deploy:
-        - graphql get-schema -p prisma
+  post-deploy:
+    - graphql get-schema -p prisma
+
+endpoint: https://fss-prod-e04e3b48e5.herokuapp.com/fss-prod/prod
