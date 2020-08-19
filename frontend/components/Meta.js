@@ -7,7 +7,7 @@ const Meta = () => (
     <link rel="shortcut icon" href="/static/favicon.png" />
     <link rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
-    <title>Sick Fits!</title>
+    <title>Full-Stack Shop</title>
   </Head>
 )
 

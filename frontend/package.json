@@ -1,7 +1,7 @@
 {
-  "name": "sick-fits-frontend",
+  "name": "full-stack-shop-frontend",
   "version": "1.0.0",
-  "description": "Sick Fits! An example React, GraphQL, Next and Apollo",
+  "description": "Full-Stack Shop! An example React, GraphQL, Next and Apollo",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7777",
@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "apollo-boost": "^0.1.16",
-    "apollo-client": "^2.4.2",
+    "apollo-client": "2.4.x",
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-styled-components": "^1.7.1",
     "date-fns": "^2.0.0-alpha.7",
@@ -47,6 +47,7 @@
     "babel-plugin-module-resolver": "^3.1.1",
     "casual": "^1.5.19",
     "enzyme-to-json": "^3.3.4",
+    "graphql": "14.0.2",
     "graphql-tools": "^4.0.0",
     "jest": "^23.6.0",
     "jest-transform-graphql": "^2.1.0",

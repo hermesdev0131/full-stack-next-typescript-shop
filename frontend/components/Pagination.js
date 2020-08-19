@@ -26,7 +26,7 @@ const Pagination = props => (
         <PaginationStyles>
           <Head>
             <title>
-              SIck Fits! {props.page} of {pages}
+              Full-Stack Shop! {props.page} of {pages}
             </title>
           </Head>
           <Link

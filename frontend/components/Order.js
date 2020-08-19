@@ -44,7 +44,7 @@ class Order extends React.Component {
           return (
             <OrderStyles>
               <Head>
-                <title>Sick Fits - Order {order.id}</title>
+                <title>Full-Stack Shop - Order {order.id}</title>
               </Head>
               <p>
                 <span>Order ID:</span>
