@@ -1,5 +1,5 @@
-# source: https://eu1.prisma.sh/ryota-murakami-7fc388/active-sick-fits/dev
-# timestamp: Sat Aug 15 2020 02:57:51 GMT+0900 (Japan Standard Time)
+# source: https://fss-prod-e04e3b48e5.herokuapp.com/fss-prod/prod
+# timestamp: Thu Aug 20 2020 06:53:05 GMT+0900 (Japan Standard Time)
 
 type AggregateCartItem {
   count: Int!
@@ -824,12 +824,27 @@ input OrderItemCreateInput {
   largeImage: String!
   price: Int!
   quantity: Int
-  user: UserCreateOneInput
+  user: UserCreateOneWithoutOrdersInput
 }
 
 input OrderItemCreateManyInput {
   create: [OrderItemCreateInput!]
   connect: [OrderItemWhereUniqueInput!]
+}
+
+input OrderItemCreateManyWithoutUserInput {
+  create: [OrderItemCreateWithoutUserInput!]
+  connect: [OrderItemWhereUniqueInput!]
+}
+
+input OrderItemCreateWithoutUserInput {
+  id: ID
+  title: String!
+  description: String!
+  image: String!
+  largeImage: String!
+  price: Int!
+  quantity: Int
 }
 
 """An edge in a connection."""
@@ -1169,7 +1184,7 @@ input OrderItemUpdateDataInput {
   largeImage: String
   price: Int
   quantity: Int
-  user: UserUpdateOneInput
+  user: UserUpdateOneWithoutOrdersInput
 }
 
 input OrderItemUpdateInput {
@@ -1179,7 +1194,7 @@ input OrderItemUpdateInput {
   largeImage: String
   price: Int
   quantity: Int
-  user: UserUpdateOneInput
+  user: UserUpdateOneWithoutOrdersInput
 }
 
 input OrderItemUpdateManyDataInput {
@@ -1212,9 +1227,30 @@ input OrderItemUpdateManyMutationInput {
   quantity: Int
 }
 
+input OrderItemUpdateManyWithoutUserInput {
+  create: [OrderItemCreateWithoutUserInput!]
+  connect: [OrderItemWhereUniqueInput!]
+  set: [OrderItemWhereUniqueInput!]
+  disconnect: [OrderItemWhereUniqueInput!]
+  delete: [OrderItemWhereUniqueInput!]
+  update: [OrderItemUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [OrderItemUpdateManyWithWhereNestedInput!]
+  deleteMany: [OrderItemScalarWhereInput!]
+  upsert: [OrderItemUpsertWithWhereUniqueWithoutUserInput!]
+}
+
 input OrderItemUpdateManyWithWhereNestedInput {
   where: OrderItemScalarWhereInput!
   data: OrderItemUpdateManyDataInput!
+}
+
+input OrderItemUpdateWithoutUserDataInput {
+  title: String
+  description: String
+  image: String
+  largeImage: String
+  price: Int
+  quantity: Int
 }
 
 input OrderItemUpdateWithWhereUniqueNestedInput {
@@ -1222,10 +1258,21 @@ input OrderItemUpdateWithWhereUniqueNestedInput {
   data: OrderItemUpdateDataInput!
 }
 
+input OrderItemUpdateWithWhereUniqueWithoutUserInput {
+  where: OrderItemWhereUniqueInput!
+  data: OrderItemUpdateWithoutUserDataInput!
+}
+
 input OrderItemUpsertWithWhereUniqueNestedInput {
   where: OrderItemWhereUniqueInput!
   update: OrderItemUpdateDataInput!
   create: OrderItemCreateInput!
+}
+
+input OrderItemUpsertWithWhereUniqueWithoutUserInput {
+  where: OrderItemWhereUniqueInput!
+  update: OrderItemUpdateWithoutUserDataInput!
+  create: OrderItemCreateWithoutUserInput!
 }
 
 input OrderItemWhereInput {
@@ -1790,6 +1837,7 @@ type User implements Node {
   resetTokenExpiry: Float
   permissions: [Permission!]!
   cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
+  orders(where: OrderItemWhereInput, orderBy: OrderItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OrderItem!]
 }
 
 """A connection to a list of items."""
@@ -1811,6 +1859,7 @@ input UserCreateInput {
   resetTokenExpiry: Float
   permissions: UserCreatepermissionsInput
   cart: CartItemCreateManyWithoutUserInput
+  orders: OrderItemCreateManyWithoutUserInput
 }
 
 input UserCreateOneInput {
@@ -1820,6 +1869,11 @@ input UserCreateOneInput {
 
 input UserCreateOneWithoutCartInput {
   create: UserCreateWithoutCartInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutOrdersInput {
+  create: UserCreateWithoutOrdersInput
   connect: UserWhereUniqueInput
 }
 
@@ -1835,6 +1889,18 @@ input UserCreateWithoutCartInput {
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserCreatepermissionsInput
+  orders: OrderItemCreateManyWithoutUserInput
+}
+
+input UserCreateWithoutOrdersInput {
+  id: ID
+  name: String!
+  email: String!
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserCreatepermissionsInput
+  cart: CartItemCreateManyWithoutUserInput
 }
 
 """An edge in a connection."""
@@ -1918,6 +1984,7 @@ input UserUpdateDataInput {
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
   cart: CartItemUpdateManyWithoutUserInput
+  orders: OrderItemUpdateManyWithoutUserInput
 }
 
 input UserUpdateInput {
@@ -1928,6 +1995,7 @@ input UserUpdateInput {
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
   cart: CartItemUpdateManyWithoutUserInput
+  orders: OrderItemUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
@@ -1937,15 +2005,6 @@ input UserUpdateManyMutationInput {
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
-}
-
-input UserUpdateOneInput {
-  create: UserCreateInput
-  connect: UserWhereUniqueInput
-  disconnect: Boolean
-  delete: Boolean
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
 }
 
 input UserUpdateOneRequiredInput {
@@ -1962,6 +2021,15 @@ input UserUpdateOneRequiredWithoutCartInput {
   upsert: UserUpsertWithoutCartInput
 }
 
+input UserUpdateOneWithoutOrdersInput {
+  create: UserCreateWithoutOrdersInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: UserUpdateWithoutOrdersDataInput
+  upsert: UserUpsertWithoutOrdersInput
+}
+
 input UserUpdatepermissionsInput {
   set: [Permission!]
 }
@@ -1973,6 +2041,17 @@ input UserUpdateWithoutCartDataInput {
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
+  orders: OrderItemUpdateManyWithoutUserInput
+}
+
+input UserUpdateWithoutOrdersDataInput {
+  name: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserUpdatepermissionsInput
+  cart: CartItemUpdateManyWithoutUserInput
 }
 
 input UserUpsertNestedInput {
@@ -1983,6 +2062,11 @@ input UserUpsertNestedInput {
 input UserUpsertWithoutCartInput {
   update: UserUpdateWithoutCartDataInput!
   create: UserCreateWithoutCartInput!
+}
+
+input UserUpsertWithoutOrdersInput {
+  update: UserUpdateWithoutOrdersDataInput!
+  create: UserCreateWithoutOrdersInput!
 }
 
 input UserWhereInput {
@@ -2219,6 +2303,9 @@ input UserWhereInput {
   cart_every: CartItemWhereInput
   cart_some: CartItemWhereInput
   cart_none: CartItemWhereInput
+  orders_every: OrderItemWhereInput
+  orders_some: OrderItemWhereInput
+  orders_none: OrderItemWhereInput
 }
 
 input UserWhereUniqueInput {
