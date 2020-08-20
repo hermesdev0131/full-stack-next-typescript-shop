@@ -1,6 +1,10 @@
 # full-stack-shop
 
-- heroku next prod https://full-stack-shop-next-prod.herokuapp.com/
-- heroku backeld prod https://full-stack-shop-backend-prod.herokuapp.com/
+## Dev
+- Prisma DemoServer https://us1.prisma.sh/ryota-murakami-7fc388/full-stack-shop-prisma/dev
 
-- prisma-endpointprod https://fss-prod-e04e3b48e5.herokuapp.com
+## Prod
+- Heroku backend https://full-stack-shop-backend-prod.herokuapp.com/
+- Heroku Prisma https://full-stack-prisma-ba569384d6.herokuapp.com
+- Prisma Admin: https://full-stack-prisma-ba569384d6.herokuapp.com/_admin
+- heroku Next  https://full-stack-shop-next-prod.herokuapp.com/
