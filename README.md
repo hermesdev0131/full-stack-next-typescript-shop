@@ -1,4 +1,4 @@
-# full-stack-shop
+# Full Stack Next Typescript Graphql Shop
 
 ## Dev
 - Prisma DemoServer https://us1.prisma.sh/ryota-murakami-7fc388/full-stack-shop-prisma/dev
